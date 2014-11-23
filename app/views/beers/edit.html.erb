@@ -1,0 +1,199 @@
+<!-- Validation failure messages -->
+
+<% if @beer.errors.any? %>
+  <% @beer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- Simple full-width example -->
+
+<div class="page-header">
+  <h1>Edit Beer #<%= @beer.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_beer/<%= @beer.id %>" class="form-horizontal">
+      <!-- Label and input for beer_type -->
+      <div class="form-group">
+        <label for="beer_type" class="col-sm-2 control-label">
+          Beer type
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="beer_type" name="beer_type" placeholder="Beer type" class="form-control" value="<%= @beer.beer_type %>">
+        </div>
+      </div>
+
+      <!-- Label and input for beer_name -->
+      <div class="form-group">
+        <label for="beer_name" class="col-sm-2 control-label">
+          Beer name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="beer_name" name="beer_name" placeholder="Beer name" class="form-control" value="<%= @beer.beer_name %>">
+        </div>
+      </div>
+
+      <!-- Label and input for num_consumed -->
+      <div class="form-group">
+        <label for="num_consumed" class="col-sm-2 control-label">
+          Num consumed
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="num_consumed" name="num_consumed" placeholder="Num consumed" class="form-control" value="<%= @beer.num_consumed %>">
+        </div>
+      </div>
+
+      <!-- Label and input for star_rating -->
+      <div class="form-group">
+        <label for="star_rating" class="col-sm-2 control-label">
+          Star rating
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="star_rating" name="star_rating" placeholder="Star rating" class="form-control" value="<%= @beer.star_rating %>">
+        </div>
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="col-sm-2 control-label">
+          Notes
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @beer.notes %>">
+        </div>
+      </div>
+
+      <!-- Label and input for fav_save -->
+      <div class="form-group">
+        <label for="fav_save" class="col-sm-2 control-label">
+          Fav save
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="fav_save" name="fav_save" placeholder="Fav save" class="form-control" value="<%= @beer.fav_save %>">
+        </div>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="col-sm-2 control-label">
+          User
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @beer.user_id %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update Beer" class="btn btn-warning">
+          or
+          <a href="/beers/<%= @beer.id %>">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Beer #<%= @beer.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_beer/<%= @beer.id %>" class="form-horizontal">
+          <!-- Label and input for beer_type -->
+          <div class="form-group">
+            <label for="beer_type" class="col-sm-2 control-label">
+              Beer type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="beer_type" name="beer_type" placeholder="Beer type" class="form-control" value="<%= @beer.beer_type %>">
+            </div>
+          </div>
+
+          <!-- Label and input for beer_name -->
+          <div class="form-group">
+            <label for="beer_name" class="col-sm-2 control-label">
+              Beer name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="beer_name" name="beer_name" placeholder="Beer name" class="form-control" value="<%= @beer.beer_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for num_consumed -->
+          <div class="form-group">
+            <label for="num_consumed" class="col-sm-2 control-label">
+              Num consumed
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="num_consumed" name="num_consumed" placeholder="Num consumed" class="form-control" value="<%= @beer.num_consumed %>">
+            </div>
+          </div>
+
+          <!-- Label and input for star_rating -->
+          <div class="form-group">
+            <label for="star_rating" class="col-sm-2 control-label">
+              Star rating
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="star_rating" name="star_rating" placeholder="Star rating" class="form-control" value="<%= @beer.star_rating %>">
+            </div>
+          </div>
+
+          <!-- Label and input for notes -->
+          <div class="form-group">
+            <label for="notes" class="col-sm-2 control-label">
+              Notes
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @beer.notes %>">
+            </div>
+          </div>
+
+          <!-- Label and input for fav_save -->
+          <div class="form-group">
+            <label for="fav_save" class="col-sm-2 control-label">
+              Fav save
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="fav_save" name="fav_save" placeholder="Fav save" class="form-control" value="<%= @beer.fav_save %>">
+            </div>
+          </div>
+
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <label for="user_id" class="col-sm-2 control-label">
+              User
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @beer.user_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update Beer" class="btn btn-warning">
+              or
+              <a href="/beers/<%= @beer.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

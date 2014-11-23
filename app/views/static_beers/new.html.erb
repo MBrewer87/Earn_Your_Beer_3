@@ -1,0 +1,97 @@
+<!-- Validation failure messages -->
+
+<% if @static_beer.errors.any? %>
+  <% @static_beer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Simple full-width example-->
+
+<div class="page-header">
+  <h1>Add Static Beer</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_static_beer" class="form-horizontal">
+      <!-- Label and input for beer_category -->
+      <div class="form-group">
+        <label for="beer_category" class="col-sm-2 control-label">
+          Beer category
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="beer_category" name="beer_category" placeholder="Beer category" class="form-control" value="<%= @static_beer.beer_category %>">
+        </div>
+      </div>
+
+      <!-- Label and input for calpertype -->
+      <div class="form-group">
+        <label for="calpertype" class="col-sm-2 control-label">
+          Calpertype
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="calpertype" name="calpertype" placeholder="Calpertype" class="form-control" value="<%= @static_beer.calpertype %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Create Static Beer" class="btn btn-success">
+          or
+          <a href="/static_beers">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Static Beer</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_static_beer" class="form-horizontal">
+          <!-- Label and input for beer_category -->
+          <div class="form-group">
+            <label for="beer_category" class="col-sm-2 control-label">
+              Beer category
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="beer_category" name="beer_category" placeholder="Beer category" class="form-control" value="<%= @static_beer.beer_category %>">
+            </div>
+          </div>
+
+          <!-- Label and input for calpertype -->
+          <div class="form-group">
+            <label for="calpertype" class="col-sm-2 control-label">
+              Calpertype
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="calpertype" name="calpertype" placeholder="Calpertype" class="form-control" value="<%= @static_beer.calpertype %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Create Static Beer" class="btn btn-success">
+              or
+              <a href="/static_beers">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

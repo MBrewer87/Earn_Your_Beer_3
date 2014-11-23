@@ -1,0 +1,139 @@
+<!-- Validation failure messages -->
+
+<% if @static_exercise.errors.any? %>
+  <% @static_exercise.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- Simple full-width example -->
+
+<div class="page-header">
+  <h1>Edit Static Exercise #<%= @static_exercise.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_static_exercise/<%= @static_exercise.id %>" class="form-horizontal">
+      <!-- Label and input for exercise_category -->
+      <div class="form-group">
+        <label for="exercise_category" class="col-sm-2 control-label">
+          Exercise category
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="exercise_category" name="exercise_category" placeholder="Exercise category" class="form-control" value="<%= @static_exercise.exercise_category %>">
+        </div>
+      </div>
+
+      <!-- Label and input for calpermin_low -->
+      <div class="form-group">
+        <label for="calpermin_low" class="col-sm-2 control-label">
+          Calpermin low
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="calpermin_low" name="calpermin_low" placeholder="Calpermin low" class="form-control" value="<%= @static_exercise.calpermin_low %>">
+        </div>
+      </div>
+
+      <!-- Label and input for calpermin_med -->
+      <div class="form-group">
+        <label for="calpermin_med" class="col-sm-2 control-label">
+          Calpermin med
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="calpermin_med" name="calpermin_med" placeholder="Calpermin med" class="form-control" value="<%= @static_exercise.calpermin_med %>">
+        </div>
+      </div>
+
+      <!-- Label and input for calpermin_high -->
+      <div class="form-group">
+        <label for="calpermin_high" class="col-sm-2 control-label">
+          Calpermin high
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="calpermin_high" name="calpermin_high" placeholder="Calpermin high" class="form-control" value="<%= @static_exercise.calpermin_high %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update Static Exercise" class="btn btn-warning">
+          or
+          <a href="/static_exercises/<%= @static_exercise.id %>">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Static Exercise #<%= @static_exercise.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_static_exercise/<%= @static_exercise.id %>" class="form-horizontal">
+          <!-- Label and input for exercise_category -->
+          <div class="form-group">
+            <label for="exercise_category" class="col-sm-2 control-label">
+              Exercise category
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="exercise_category" name="exercise_category" placeholder="Exercise category" class="form-control" value="<%= @static_exercise.exercise_category %>">
+            </div>
+          </div>
+
+          <!-- Label and input for calpermin_low -->
+          <div class="form-group">
+            <label for="calpermin_low" class="col-sm-2 control-label">
+              Calpermin low
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="calpermin_low" name="calpermin_low" placeholder="Calpermin low" class="form-control" value="<%= @static_exercise.calpermin_low %>">
+            </div>
+          </div>
+
+          <!-- Label and input for calpermin_med -->
+          <div class="form-group">
+            <label for="calpermin_med" class="col-sm-2 control-label">
+              Calpermin med
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="calpermin_med" name="calpermin_med" placeholder="Calpermin med" class="form-control" value="<%= @static_exercise.calpermin_med %>">
+            </div>
+          </div>
+
+          <!-- Label and input for calpermin_high -->
+          <div class="form-group">
+            <label for="calpermin_high" class="col-sm-2 control-label">
+              Calpermin high
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="calpermin_high" name="calpermin_high" placeholder="Calpermin high" class="form-control" value="<%= @static_exercise.calpermin_high %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update Static Exercise" class="btn btn-warning">
+              or
+              <a href="/static_exercises/<%= @static_exercise.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

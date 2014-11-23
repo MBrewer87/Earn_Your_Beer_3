@@ -1,0 +1,108 @@
+<!-- Simple full-width example-->
+
+<div class="page-header">
+  <h1>Beer #<%= @beer.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Beer type</dt>
+      <dd><%= @beer.beer_type %></dd>
+
+      <dt>Beer name</dt>
+      <dd><%= @beer.beer_name %></dd>
+
+      <dt>Num consumed</dt>
+      <dd><%= @beer.num_consumed %></dd>
+
+      <dt>Star rating</dt>
+      <dd><%= @beer.star_rating %></dd>
+
+      <dt>Notes</dt>
+      <dd><%= @beer.notes %></dd>
+
+      <dt>Fav save</dt>
+      <dd><%= @beer.fav_save %></dd>
+
+      <dt>User</dt>
+      <dd><%= @beer.user_id %></dd>
+
+      <dt></dt>
+      <dd>
+        <div class="btn-group">
+          <a href="/beers" class="btn btn-primary">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+
+          <a href="/beers/<%= @beer.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+
+          <a href="/delete_beer/<%= @beer.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </div>
+      </dd>
+    </dl>
+
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Beer #<%= @beer.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Beer type</dt>
+              <dd><%= @beer.beer_type %></dd>
+
+              <dt>Beer name</dt>
+              <dd><%= @beer.beer_name %></dd>
+
+              <dt>Num consumed</dt>
+              <dd><%= @beer.num_consumed %></dd>
+
+              <dt>Star rating</dt>
+              <dd><%= @beer.star_rating %></dd>
+
+              <dt>Notes</dt>
+              <dd><%= @beer.notes %></dd>
+
+              <dt>Fav save</dt>
+              <dd><%= @beer.fav_save %></dd>
+
+              <dt>User</dt>
+              <dd><%= @beer.user_id %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/beers" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/beers/<%= @beer.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_beer/<%= @beer.id %>" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

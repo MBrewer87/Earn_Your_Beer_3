@@ -1,0 +1,162 @@
+<div class="page-header">
+  <h1>
+    Beers
+    <a href="/beers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+  </h1>
+</div>
+
+<!-- Simple table layout example -->
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Beer type</th>
+          <th>Beer name</th>
+          <th>Num consumed</th>
+          <th>Star rating</th>
+          <th>Notes</th>
+          <th>Fav save</th>
+          <th>User</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @beers.each do |beer| %>
+          <tr>
+            <td><%= beer.beer_type %></td>
+            <td><%= beer.beer_name %></td>
+            <td><%= beer.num_consumed %></td>
+            <td><%= beer.star_rating %></td>
+            <td><%= beer.notes %></td>
+            <td><%= beer.fav_save %></td>
+            <td><%= beer.user_id %></td>
+            <td>
+              <a href="/beers/<%= beer.id %>" class="btn btn-primary">
+                <i class="fa fa-search-plus"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/beers/<%= beer.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/delete_beer/<%= beer.id %>" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- End simple table layout example -->
+
+<!-- Responsive, Isotope-based layout example -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <input type="text" id="quicksearch" placeholder="Search Beers (start typing)" class="form-control">
+  </div>
+</div>
+
+<hr>
+
+<div class="row isotope-container">
+<% @beers.each do |beer| %>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Beer #<%= beer.id %></h3>
+      </div>
+      <div class="panel-body">
+        <dl>
+          <dt>Beer type</dt>
+          <dd><%= beer.beer_type %></dd>
+
+          <dt>Beer name</dt>
+          <dd><%= beer.beer_name %></dd>
+
+          <dt>Num consumed</dt>
+          <dd><%= beer.num_consumed %></dd>
+
+          <dt>Star rating</dt>
+          <dd><%= beer.star_rating %></dd>
+
+          <dt>Notes</dt>
+          <dd><%= beer.notes %></dd>
+
+          <dt>Fav save</dt>
+          <dd><%= beer.fav_save %></dd>
+
+          <dt>User</dt>
+          <dd><%= beer.user_id %></dd>
+
+        </dl>
+        <div class="btn-group btn-group-justified">
+          <a href="/beers/<%= beer.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+
+          <a href="/beers/<%= beer.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+
+          <a href="/delete_beer/<%= beer.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<!-- JavaScript for Isotope layout and quicksearch -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
+<script>
+  $(function() {
+    // quick search regex
+    var qsRegex;
+
+    // init Isotope
+    var $container = $('.isotope-container').isotope({
+      itemSelector: '.isotope-item',
+      layoutMode: 'masonry',
+      filter: function() {
+        return qsRegex ? $(this).text().match( qsRegex ) : true;
+      }
+    });
+
+    // use value of search field to filter
+    var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+      $container.isotope();
+    }, 200 ) );
+
+  });
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce( fn, threshold ) {
+    var timeout;
+    return function debounced() {
+      if ( timeout ) {
+        clearTimeout( timeout );
+      }
+      function delayed() {
+        fn();
+        timeout = null;
+      }
+      timeout = setTimeout( delayed, threshold || 100 );
+    }
+  }
+</script>
+
+<!-- End responsive, Isotope-based layout example -->
