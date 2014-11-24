@@ -13,7 +13,7 @@ class StaticBeersController < ApplicationController
 
   def create
     @static_beer = StaticBeer.new
-    @static_beer.beer_category = params[:beer_category]
+    @static_beer.beer_cat_name = params[:beer_cat_name]
     @static_beer.calpertype = params[:calpertype]
 
     if @static_beer.save
@@ -30,7 +30,7 @@ class StaticBeersController < ApplicationController
   def update
     @static_beer = StaticBeer.find(params[:id])
 
-    @static_beer.beer_category = params[:beer_category]
+    @static_beer.beer_cat_name = params[:beer_cat_name]
     @static_beer.calpertype = params[:calpertype]
 
     if @static_beer.save

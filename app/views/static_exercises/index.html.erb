@@ -1,57 +1,9 @@
 <div class="page-header">
   <h1>
-    Static exercises
+    Static Exercises - Maintained by Moderator
     <a href="/static_exercises/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
-
-<!-- Simple table layout example -->
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Exercise category</th>
-          <th>Calpermin low</th>
-          <th>Calpermin med</th>
-          <th>Calpermin high</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @static_exercises.each do |static_exercise| %>
-          <tr>
-            <td><%= static_exercise.exercise_category %></td>
-            <td><%= static_exercise.calpermin_low %></td>
-            <td><%= static_exercise.calpermin_med %></td>
-            <td><%= static_exercise.calpermin_high %></td>
-            <td>
-              <a href="/static_exercises/<%= static_exercise.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/static_exercises/<%= static_exercise.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_static_exercise/<%= static_exercise.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- End simple table layout example -->
 
 <!-- Responsive, Isotope-based layout example -->
 
@@ -72,16 +24,16 @@
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Exercise category</dt>
-          <dd><%= static_exercise.exercise_category %></dd>
+          <dt>Exercise Category</dt>
+          <dd><%= static_exercise.exercise_cat_name %></dd>
 
-          <dt>Calpermin low</dt>
+          <dt>Cal. Per Min @ 170 lbs - Low Intensity</dt>
           <dd><%= static_exercise.calpermin_low %></dd>
 
-          <dt>Calpermin med</dt>
+          <dt>Cal. Per Min @ 170 lbs - Med. Intensity</dt>
           <dd><%= static_exercise.calpermin_med %></dd>
 
-          <dt>Calpermin high</dt>
+          <dt>Cal. Per Min @ 170 lbs - High Intensity</dt>
           <dd><%= static_exercise.calpermin_high %></dd>
 
         </dl>

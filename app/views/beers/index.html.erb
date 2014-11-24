@@ -12,13 +12,13 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Beer type</th>
-          <th>Beer name</th>
-          <th>Num consumed</th>
-          <th>Star rating</th>
+          <th>Beer Type</th>
+          <th>Beer Name</th>
+          <th># Consumed</th>
+          <th>Star Rating</th>
           <th>Notes</th>
-          <th>Fav save</th>
-          <th>User</th>
+          <th>Saved as Favorite?</th>
+          <th>User Name</th>
           <th></th>
           <th></th>
           <th></th>
@@ -28,13 +28,13 @@
       <tbody>
         <% @beers.each do |beer| %>
           <tr>
-            <td><%= beer.beer_type %></td>
+            <td><%= beer.staticbeer.beer_cat_name %></td>
             <td><%= beer.beer_name %></td>
             <td><%= beer.num_consumed %></td>
             <td><%= beer.star_rating %></td>
             <td><%= beer.notes %></td>
             <td><%= beer.fav_save %></td>
-            <td><%= beer.user_id %></td>
+            <td><%= beer.user.username %></td>
             <td>
               <a href="/beers/<%= beer.id %>" class="btn btn-primary">
                 <i class="fa fa-search-plus"></i>
@@ -59,7 +59,7 @@
 
 <!-- End simple table layout example -->
 
-<!-- Responsive, Isotope-based layout example -->
+<!-- Responsive, Isotope-based layout example
 
 <div class="row">
   <div class="col-xs-12">
@@ -119,7 +119,9 @@
 <% end %>
 </div>
 
-<!-- JavaScript for Isotope layout and quicksearch -->
+-->
+
+<!-- JavaScript for Isotope layout and quicksearch
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
 <script>
   $(function() {
@@ -158,5 +160,7 @@
     }
   }
 </script>
+
+-->
 
 <!-- End responsive, Isotope-based layout example -->

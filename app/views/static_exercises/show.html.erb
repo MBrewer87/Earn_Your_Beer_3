@@ -1,47 +1,3 @@
-<!-- Simple full-width example-->
-
-<div class="page-header">
-  <h1>Static Exercise #<%= @static_exercise.id %></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Exercise category</dt>
-      <dd><%= @static_exercise.exercise_category %></dd>
-
-      <dt>Calpermin low</dt>
-      <dd><%= @static_exercise.calpermin_low %></dd>
-
-      <dt>Calpermin med</dt>
-      <dd><%= @static_exercise.calpermin_med %></dd>
-
-      <dt>Calpermin high</dt>
-      <dd><%= @static_exercise.calpermin_high %></dd>
-
-      <dt></dt>
-      <dd>
-        <div class="btn-group">
-          <a href="/static_exercises" class="btn btn-primary">
-            <i class="fa fa-chevron-left"></i>
-          </a>
-
-          <a href="/static_exercises/<%= @static_exercise.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_static_exercise/<%= @static_exercise.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </dd>
-    </dl>
-
-  </div>
-</div>
-
-<!-- End simple full-width example-->
-
 <!-- Responsive panel example-->
 
 <div class="row">
@@ -54,17 +10,17 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Exercise category</dt>
-              <dd><%= @static_exercise.exercise_category %></dd>
+             <dt>Exercise Category</dt>
+              <dd><%= static_exercise.exercise_cat_name %></dd>
 
-              <dt>Calpermin low</dt>
-              <dd><%= @static_exercise.calpermin_low %></dd>
+              <dt>Calories Per Min - Low Intensity</dt>
+              <dd><%= static_exercise.calpermin_low %></dd>
 
-              <dt>Calpermin med</dt>
-              <dd><%= @static_exercise.calpermin_med %></dd>
+              <dt>Calories Per Min - Med. Intensity</dt>
+              <dd><%= static_exercise.calpermin_med %></dd>
 
-              <dt>Calpermin high</dt>
-              <dd><%= @static_exercise.calpermin_high %></dd>
+              <dt>Calories Per Min - High Intensity</dt>
+              <dd><%= static_exercise.calpermin_high %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

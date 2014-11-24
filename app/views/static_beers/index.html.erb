@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Static beers
+    Static Beer List - Maintained by Moderator
     <a href="/static_beers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
@@ -12,8 +12,8 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Beer category</th>
-          <th>Calpertype</th>
+          <th>Beer Category</th>
+          <th>Calories Per Serving</th>
           <th></th>
           <th></th>
           <th></th>
@@ -23,7 +23,7 @@
       <tbody>
         <% @static_beers.each do |static_beer| %>
           <tr>
-            <td><%= static_beer.beer_category %></td>
+            <td><%= static_beer.beer_cat_name %></td>
             <td><%= static_beer.calpertype %></td>
             <td>
               <a href="/static_beers/<%= static_beer.id %>" class="btn btn-primary">
@@ -48,51 +48,6 @@
 </div>
 
 <!-- End simple table layout example -->
-
-<!-- Responsive, Isotope-based layout example -->
-
-<div class="row">
-  <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Static beers (start typing)" class="form-control">
-  </div>
-</div>
-
-<hr>
-
-<div class="row isotope-container">
-<% @static_beers.each do |static_beer| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Static Beer #<%= static_beer.id %></h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>Beer category</dt>
-          <dd><%= static_beer.beer_category %></dd>
-
-          <dt>Calpertype</dt>
-          <dd><%= static_beer.calpertype %></dd>
-
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/static_beers/<%= static_beer.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/static_beers/<%= static_beer.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_static_beer/<%= static_beer.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-</div>
 
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>

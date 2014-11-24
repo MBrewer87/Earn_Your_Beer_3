@@ -13,7 +13,7 @@ class StaticExercisesController < ApplicationController
 
   def create
     @static_exercise = StaticExercise.new
-    @static_exercise.exercise_category = params[:exercise_category]
+    @static_exercise.exercise_cat_name = params[:exercise_cat_name]
     @static_exercise.calpermin_low = params[:calpermin_low]
     @static_exercise.calpermin_med = params[:calpermin_med]
     @static_exercise.calpermin_high = params[:calpermin_high]
@@ -32,7 +32,7 @@ class StaticExercisesController < ApplicationController
   def update
     @static_exercise = StaticExercise.find(params[:id])
 
-    @static_exercise.exercise_category = params[:exercise_category]
+    @static_exercise.exercise_cat_name = params[:exercise_cat_name]
     @static_exercise.calpermin_low = params[:calpermin_low]
     @static_exercise.calpermin_med = params[:calpermin_med]
     @static_exercise.calpermin_high = params[:calpermin_high]

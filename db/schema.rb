@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 20141123203358) do
   end
 
   create_table "static_beers", force: true do |t|
-    t.string   "beer_category"
+    t.string   "beer_cat_name"
     t.float    "calpertype"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "static_exercises", force: true do |t|
-    t.string   "exercise_category"
+    t.string   "exercise_cat_name"
     t.float    "calpermin_low"
     t.float    "calpermin_med"
     t.float    "calpermin_high"
