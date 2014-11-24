@@ -11,7 +11,7 @@
           <div class="col-md-12">
             <dl class="dl-horizontal">
               <dt>Exercise Category</dt>
-              <dd><%= @exercise.exercise_category %></dd>
+              <dd><%= @exercise.staticexercise.exercise_cat_name %></dd>
 
               <dt>Duration</dt>
               <dd><%= @exercise.duration %></dd>
@@ -23,7 +23,7 @@
               <dd><%= @exercise.favsave %></dd>
 
               <dt>User</dt>
-              <dd><%= @exercise.user_id %></dd>
+              <dd><%= @exercise.user.username %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

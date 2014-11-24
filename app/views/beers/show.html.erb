@@ -10,26 +10,26 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Beer type</dt>
-              <dd><%= @beer.beer_type %></dd>
+              <dt>Beer Type</dt>
+              <dd><%= @beer.staticbeer.beer_cat_name %></dd>
 
-              <dt>Beer name</dt>
+              <dt>Beer Name</dt>
               <dd><%= @beer.beer_name %></dd>
 
-              <dt>Num consumed</dt>
+              <dt># Consumed</dt>
               <dd><%= @beer.num_consumed %></dd>
 
-              <dt>Star rating</dt>
+              <dt>Star Rating</dt>
               <dd><%= @beer.star_rating %></dd>
 
               <dt>Notes</dt>
               <dd><%= @beer.notes %></dd>
 
-              <dt>Fav save</dt>
+              <dt>Saved as Favorite?</dt>
               <dd><%= @beer.fav_save %></dd>
 
               <dt>User</dt>
-              <dd><%= @beer.user_id %></dd>
+              <dd><%= @beer.user.username %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

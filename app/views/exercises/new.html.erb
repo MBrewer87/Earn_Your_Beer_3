@@ -25,7 +25,7 @@
               Exercise Category
             </label>
             <div class="col-sm-10">
-              <input type="text" id="exercise_category" name="exercise_category" placeholder="Exercise Category" class="form-control" value="<%= @exercise.exercise_category %>">
+             <%= select_tag(:exercise_category, options_from_collection_for_select(StaticExercise.all, :id, :exercise_cat_name, @exercise.exercise_category), :class => "form-control") %>
             </div>
           </div>
 
@@ -45,7 +45,9 @@
               Intensity
             </label>
             <div class="col-sm-10">
-              <input type="text" id="intensity" name="intensity" placeholder="Intensity" class="form-control" value="<%= @exercise.intensity %>">
+              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity1" value="Low">Low</label>
+              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity2" value="Medium">Medium</label>
+              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity3" value="High">High</label>
             </div>
           </div>
 
@@ -55,7 +57,8 @@
               Save as Favorite?
             </label>
             <div class="col-sm-10">
-              <input type="text" id="favsave" name="favsave" placeholder="Yes or No" class="form-control" value="<%= @exercise.favsave %>">
+                <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave1" value="Yes">Yes</label>
+                <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave2" value="No">No</label>
             </div>
           </div>
 
@@ -65,7 +68,7 @@
               User
             </label>
             <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @exercise.user_id %>">
+              <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username, @exercise.user_id), :class => "form-control") %>
             </div>
           </div>
 
