@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  root 'rootpages#mainindex'
+  # Overall Index Page:
+  get("/", { :controller => 'rootpages', :action => "mainindex" })
+
+  # About page:
+  get("/about", { :controller => 'rootpages', :action => "about"})
+
   # Routes for the Static_beer resource:
   # CREATE
   get('/static_beers/new', { :controller => 'static_beers', :action => 'new' })
@@ -50,12 +58,6 @@ Rails.application.routes.draw do
   # DELETE
   get('/delete_user/:id', { :controller => 'users', :action => 'destroy' })
   #------------------------------
-
-  # Overall Index Page:
-  get("/", { :controller => 'exercises', :action => "mainindex" })
-
-  # About page:
-  get("/about", { :controller => 'exercises', :action => "about"})
 
   # Routes for the Beer resource:
   # CREATE

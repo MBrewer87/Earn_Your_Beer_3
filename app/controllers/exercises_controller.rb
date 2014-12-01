@@ -1,9 +1,6 @@
 class ExercisesController < ApplicationController
-  def mainindex
-  end
 
-  def about
-  end
+before_action :authenticate_user!
 
   def index
     @exercises = Exercise.all
