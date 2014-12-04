@@ -1,5 +1,6 @@
 class BeersController < ApplicationController
-  before_action :authenticate_user!
+    before_action :authenticate_user!
+
   def index
     @beers = Beer.all
   end

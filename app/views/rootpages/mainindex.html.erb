@@ -8,12 +8,15 @@
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
 </head>
 
 <body>
 
   <div class="container">
-
 
         <div class="jumbotron">
           <h1>Earn Your Beer (Logo To Go Here)</h1>
@@ -21,7 +24,7 @@
           <p> </p>
 
 <!-- Once we learn how to log in/log out, fix this so it signs out. -->
-          <p><a class="btn btn-primary btn-lg" role="button" href="http://www.google.com">Sign Out</a></p>
+          <p><a class="btn btn-primary btn-lg" role="button" href="users/sign_out" data-method="delete">Sign Out</a></p>
         </div>
 
         <div class="row">
@@ -40,23 +43,27 @@
             </div>
         </div>
 
-<!-- Once we learn how to log in/log out, fix this so it only shows up for sign-in.  -->
+      <% if current_user.present? %>
         <div class="alert alert-success alert-dismissible" role="alert"> <!-- Sign-in confirmation alert -->
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close </span> </button>
-          <p>Welcome, Mike Brewer! You have signed in successfully.</p>
+          <p>Welcome, <%= current_user.username %>! You have signed in successfully.</p>
         </div>
+      <% end %>
 
         <div class="row">
             <div class="col-lg-5 well text-center">
-              <a class="btn btn-primary btn-lg" role="button" href="http://www.google.com">
+              <a class="btn btn-primary btn-lg" role="button" href="/exercises/new">
                 Record Your Exercise
               </a>
             </div>
 
             <div class="col-lg-5 well col-lg-offset-2 text-center">
-              <a class="btn btn-primary btn-lg" role="button" href="http://www.google.com">
+              <a class="btn btn-primary btn-lg" role="button" href="/beers/new">
                 Record Your Beer
               </a>
             </div>
+        </div>
+
+    </div>
 
 </body>

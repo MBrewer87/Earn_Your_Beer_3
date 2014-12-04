@@ -1,4 +1,5 @@
 class StaticExercisesController < ApplicationController
+
   before_action :authenticate_user!
   def index
     @static_exercises = StaticExercise.all

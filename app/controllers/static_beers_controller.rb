@@ -1,4 +1,5 @@
 class StaticBeersController < ApplicationController
+
   before_action :authenticate_user!
   def index
     @static_beers = StaticBeer.all
