@@ -31,6 +31,9 @@
               <dt>User</dt>
               <dd><%= @beer.user.username %></dd>
 
+              <dt>Calories</dt>
+              <dd><%= @beer.staticbeer.calpertype.to_i * @beer.num_consumed.to_i %></dd>
+
             </dl>
             <div class="btn-group btn-group-justified">
               <a href="/beers" class="btn btn-primary">

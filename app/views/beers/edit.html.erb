@@ -85,13 +85,10 @@
             </div>
           </div>
 
-          <!-- Label and input for user_id -->
+          <!-- Label and input for user ID, which is hidden -->
           <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User ID (should autopopulate in future)
-            </label>
             <div class="col-sm-10">
-                <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username, @beer.user_id), :class => "form-control") %>
+              <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
             </div>
           </div>
 

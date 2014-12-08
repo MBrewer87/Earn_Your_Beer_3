@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new
     @user.username = params[:username]
     @user.email = params[:email]
+    @user.weight = params[:weight]
     @user.encrypted_password = params[:encrypted_password]
 
     if @user.save
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
 
     @user.username = params[:username]
     @user.email = params[:email]
+    @user.weight = params[:weight]
     @user.encrypted_password = params[:encrypted_password]
 
     if @user.save

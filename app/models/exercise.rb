@@ -7,6 +7,5 @@ class Exercise < ActiveRecord::Base
   validates( :intensity, :presence => true)
   validates( :user_id, :presence => true)
   validates( :favsave, :presence => true)
-  validates( :user, :presence => true)
 
 end

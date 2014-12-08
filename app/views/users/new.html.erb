@@ -40,13 +40,23 @@
             </div>
           </div>
 
+          <!-- Label and input for current weight -->
+          <div class="form-group">
+            <label for="weight" class="col-sm-2 control-label">
+              Current Weight (in lbs)
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="weight" name="weight" placeholder="Weight" class="form-control" value="<%= @user.weight %>">
+            </div>
+          </div>
+
           <!-- Label and input for encrypted_password -->
           <div class="form-group">
             <label for="encrypted_password" class="col-sm-2 control-label">
-              Encrypted password
+              Encrypted Password
             </label>
             <div class="col-sm-10">
-              <input type="text" id="encrypted_password" name="encrypted_password" placeholder="Encrypted password" class="form-control" value="<%= @user.encrypted_password %>">
+              <input type="text" id="encrypted_password" name="encrypted_password" placeholder="Encrypted Password" class="form-control" value="<%= @user.encrypted_password %>">
             </div>
           </div>
 

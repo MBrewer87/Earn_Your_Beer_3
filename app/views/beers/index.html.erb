@@ -23,6 +23,7 @@
           <th>Notes</th>
           <th>Saved as Favorite?</th>
           <th>User Name</th>
+          <th>Calories</th>
           <th></th>
           <th></th>
           <th></th>
@@ -39,6 +40,7 @@
             <td><%= beer.notes %></td>
             <td><%= beer.fav_save %></td>
             <td><%= beer.user.username %></td>
+            <td><%= beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %></td>
             <td>
               <a href="/beers/<%= beer.id %>" class="btn btn-primary">
                 <i class="fa fa-search-plus"></i>

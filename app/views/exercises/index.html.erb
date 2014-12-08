@@ -17,6 +17,7 @@
           <th>Intensity</th>
           <th>Favorite?</th>
           <th>User Name</th>
+          <th>Calories Burned</th>
           <th></th>
           <th></th>
           <th></th>
@@ -30,7 +31,18 @@
             <td><%= exercise.duration %></td>
             <td><%= exercise.intensity %></td>
             <td><%= exercise.favsave %></td>
-            <td><%= exercise.user.username %></td>
+            <td> <%= exercise.user.username %> </td>
+            <td>
+              <% if exercise.intensity == "Low" %>
+                <%= (exercise.staticexercise.calpermin_low * exercise.duration).to_f %>
+              <% elsif exercise.intensity =="Medium" %>
+                <%= (exercise.staticexercise.calpermin_med * exercise.duration).to_f %>
+              <% elsif exercise.intensity == "High" %>
+                <%= (exercise.staticexercise.calpermin_high * exercise.duration).to_f %>
+              <% else %>
+                N/A
+              <% end %>
+            </td>
             <td>
               <a href="/exercises/<%= exercise.id %>" class="btn btn-primary">
                 <i class="fa fa-search-plus"></i>
