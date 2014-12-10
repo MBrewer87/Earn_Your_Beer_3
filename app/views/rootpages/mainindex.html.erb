@@ -17,13 +17,12 @@
 <body>
 
   <div class="container">
-
         <div class="jumbotron">
-          <h1>Earn Your Beer (Logo To Go Here)</h1>
-          <p>Vanquishing the beer belly since 2014</p>
           <p> </p>
-
-<!-- Once we learn how to log in/log out, fix this so it signs out. -->
+          <div class="center-block">
+            <img src="/assets/BeerSuds_Modified.jpg" alt="Earn Your Beer: Vanquishing the Beer Belly Since 2014" style="border:5px solid white">
+          </div>
+          <p> </p>
           <p><a class="btn btn-primary btn-lg" role="button" href="users/sign_out" data-method="delete">Sign Out</a></p>
         </div>
 
@@ -43,12 +42,13 @@
             </div>
         </div>
 
-      <% if current_user.present? %>
-        <div class="alert alert-success alert-dismissible" role="alert"> <!-- Sign-in confirmation alert -->
+<!--    Removing because of installation of devise  -->
+<!-- <% if current_user.present? %>
+        <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close </span> </button>
           <p>Welcome, <%= current_user.username %>! You have signed in successfully.</p>
         </div>
-      <% end %>
+      <% end %> -->
 
         <div class="row">
             <div class="col-lg-5 well text-center">

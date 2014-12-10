@@ -10,6 +10,13 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
+
+              <dt>Date Logged</dt>
+              <dd><%= @exercise.created_at.strftime("%b %e, %Y") %></dd>
+
+              <dt>Date Last Modified</dt>
+              <dd><%= @exercise.updated_at.strftime("%b %e, %Y") %></dd>
+
               <dt>Exercise Category</dt>
               <dd><%= @exercise.staticexercise.exercise_cat_name %></dd>
 

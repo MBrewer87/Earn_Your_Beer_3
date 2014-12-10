@@ -16,6 +16,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Date Logged</th>
           <th>Beer Type</th>
           <th>Beer Name</th>
           <th># Consumed</th>
@@ -32,34 +33,55 @@
 
       <tbody>
         <% @beers.each do |beer| %>
-          <tr>
-            <td><%= beer.staticbeer.beer_cat_name %></td>
-            <td><%= beer.beer_name %></td>
-            <td><%= beer.num_consumed %></td>
-            <td><%= beer.star_rating %></td>
-            <td><%= beer.notes %></td>
-            <td><%= beer.fav_save %></td>
-            <td><%= beer.user.username %></td>
-            <td><%= beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %></td>
-            <td>
-              <a href="/beers/<%= beer.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/beers/<%= beer.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_beer/<%= beer.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
+          <% if beer.user.username == current_user.username %>
+            <tr>
+              <td><%= beer.created_at.strftime("%b %e, %Y") %></td>
+              <td><%= beer.staticbeer.beer_cat_name %></td>
+              <td><%= beer.beer_name %></td>
+              <td><%= beer.num_consumed %></td>
+              <td><%= beer.star_rating %></td>
+              <td><%= beer.notes %></td>
+              <td><%= beer.fav_save %></td>
+              <td><%= beer.user.username %></td>
+              <td><%= beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %></td>
+              <td>
+                <a href="/beers/<%= beer.id %>" class="btn btn-primary">
+                  <i class="fa fa-search-plus"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/beers/<%= beer.id %>/edit" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/delete_beer/<%= beer.id %>" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1> Total Calories Gained:
+          <% running_total = 0 %>
+          <% @beers.each do |beer| %>
+            <% if beer.user.username == current_user.username %>
+              <% running_total = running_total + beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %>
+            <% end %>
+          <% end %>
+          <%= running_total %>
+         </h1>
+      </div>
+    </div>
   </div>
 </div>
 

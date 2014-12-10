@@ -10,6 +10,13 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
+
+              <dt>Date Logged</dt>
+              <dd><%= @beer.created_at.strftime("%b %e, %Y") %></dd>
+
+              <dt>Date Last Modified</dt>
+              <dd><%= @beer.updated_at.strftime("%b %e, %Y") %></dd>
+
               <dt>Beer Type</dt>
               <dd><%= @beer.staticbeer.beer_cat_name %></dd>
 
