@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   # About page:
   get("/about", { :controller => 'rootpages', :action => "about"})
 
+  #------------------------------
+  # Favorites Page:
+  get('/favorites', { :controller => 'favorites', :action => 'show'})
+
+  # Weight Edit and Update Pages:
+  get('/users/:id/weightedit', { :controller => 'users', :action => 'weightedit'})
+  get('/update_weight/:id', { :controller => 'users', :action => 'weightupdate'})
+
   # Routes for the Static_beer resource:
   # CREATE
   get('/static_beers/new', { :controller => 'static_beers', :action => 'new' })

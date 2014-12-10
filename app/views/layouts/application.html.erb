@@ -41,6 +41,10 @@
       <ul class="nav navbar-nav">
         <li><a href="/beers">Beer Tracking</a></li>
         <li><a href="/exercises">Exercise Tracking</a></li>
+      <% if current_user.present? %>
+        <li><a href="/favorites">My Favorites</a></li>
+        <li><a href="/users/<%= current_user.id %>/weightedit">Update Weight</a></li>
+      <% end %>
         <li><a href="/about">About</a></li>
       </ul>
 

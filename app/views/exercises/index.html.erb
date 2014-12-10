@@ -37,11 +37,11 @@
               <td> <%= exercise.user.username %> </td>
               <td>
                 <% if exercise.intensity == "Low" %>
-                  <%= (exercise.staticexercise.calpermin_low * exercise.duration).to_f %>
+                  <%= (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
                 <% elsif exercise.intensity == "Medium" %>
-                  <%= (exercise.staticexercise.calpermin_med * exercise.duration).to_f %>
+                  <%= (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
                 <% elsif exercise.intensity == "High" %>
-                  <%= (exercise.staticexercise.calpermin_high * exercise.duration).to_f %>
+                  <%= (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
                 <% else %>
                   N/A
                 <% end %>
@@ -79,16 +79,17 @@
             <% if exercise.user.username == current_user.username %>
               <% running_total = running_total +
                 if exercise.intensity == "Low"
-                  exercise.staticexercise.calpermin_low.to_f * exercise.duration.to_f
+                 (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
                 elsif exercise.intensity =="Medium"
-                  exercise.staticexercise.calpermin_med.to_f * exercise.duration.to_f
+                  (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
                 elsif exercise.intensity == "High"
-                  exercise.staticexercise.calpermin_high.to_f * exercise.duration.to_f
+                  (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
                 end %>
             <% end %>
           <% end %>
-          <%= running_total %>
+          <%= running_total.round(2) %>
          </h1>
+         Note: Calorie scaling by weight works well up to a weight of 265 pounds. Above this weight, calorie values from exercise may be <u>understated</u> by more than 5%.
       </div>
     </div>
   </div>

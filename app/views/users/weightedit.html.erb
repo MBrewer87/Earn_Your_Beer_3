@@ -1,0 +1,73 @@
+<!-- Validation failure messages, same as with user editing -->
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Weight For User: <%= @user.username %></h3>
+        <h4>Your Last Recorded Weight:  <%= @user.weight %> </h4>
+      </div>
+      <div class="panel-body">
+        <form action="/update_weight/<%= @user.id %>" class="form-horizontal">
+          <!-- Label and input for username -->
+          <div class="form-group">
+            <label for="weight" class="col-sm-2 control-label">
+              New Weight (in lbs.)
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="weight" name="weight" placeholder="<%= @user.weight %>" class="form-control" value="<%= @user.weight %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update Weight For User" class="btn btn-warning">
+              or
+              <a href="/">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+  <!-- Since I have calories calculated by the site vs. stored in a table, we will re-calculate the running total for both exercise and beer for that user here and then subtract them. I acknowledge this isn't perfectly DRY, but it works for this purpose. To simplify the app in the future, we could have a hidden form box in the "new" forms for Exercise and Beer that auto-calculates and stores calorie values in a "calorie" column (I just had other more critical project things to focus on). -->
+          <% runningtotal1 = 0 %>
+          <% runningtotal2 = 0 %>
+          <% @exercises.each do |exercise| %>
+            <% if exercise.user.username == current_user.username %>
+              <% runningtotal1 = runningtotal1 +
+                if exercise.intensity == "Low"
+                 (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
+                elsif exercise.intensity =="Medium"
+                  (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
+                elsif exercise.intensity == "High"
+                  (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
+                end %>
+            <% end %>
+          <% end %>
+
+          <% runningtotal2 = 0 %>
+          <% @beers.each do |beer| %>
+            <% if beer.user.username == current_user.username %>
+              <% runningtotal2 = runningtotal2 + beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %>
+            <% end %>
+          <% end %>
+
+    <h4> To date, your net calories is <strong> <%= (runningtotal2 - runningtotal1).round(2) %> </strong>. Positive numbers mean more calories gained than burned, negative numbers mean more calories burned than gained (aka, you've earned your beer!). </h4>
+    </div>
+  </div>
+</div>

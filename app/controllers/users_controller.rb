@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
@@ -53,4 +53,22 @@ class UsersController < ApplicationController
 
     redirect_to "/users", :notice => "User deleted."
   end
+
+  def weightedit
+    @user = User.find(params[:id])
+    @exercises = Exercise.all
+    @beers = Beer.all
+  end
+
+  def weightupdate
+    @user = User.find(params[:id])
+    @user.weight = params[:weight]
+
+    if @user.save
+      redirect_to "/", :notice => "Weight updated successfully! Earn that beer."
+    else
+      render 'weight_edit'
+    end
+  end
+
 end

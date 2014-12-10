@@ -1,0 +1,95 @@
+<div class="page-header">
+  <h1>
+    My Favorite Beers and Exercises
+  </h1>
+</div>
+
+<h3> <span class="label label-default">Favorite Exercises</span> </h3>
+
+  <div class="row">
+    <div class="col-md-12 well">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Date Logged</th>
+              <th>Exercise Category</th>
+              <th>Duration</th>
+              <th>Intensity</th>
+              <th>Favorite?</th>
+              <th>User Name</th>
+              <th>Calories Burned</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @exercises.each do |exercise| %>
+            <% if exercise.user.username == current_user.username %>
+              <% if exercise.favsave == "Yes" %>
+                <tr>
+                  <td><%= exercise.created_at.strftime("%b %e, %Y") %> </td>
+                  <td><%= exercise.staticexercise.exercise_cat_name %></td>
+                  <td><%= exercise.duration %></td>
+                  <td><%= exercise.intensity %></td>
+                  <td><%= exercise.favsave %></td>
+                  <td> <%= exercise.user.username %> </td>
+                  <td>
+                    <% if exercise.intensity == "Low" %>
+                      <%= (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
+                    <% elsif exercise.intensity == "Medium" %>
+                      <%= (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
+                    <% elsif exercise.intensity == "High" %>
+                      <%= (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
+                    <% else %>
+                      N/A
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<h3> <span class="label label-default">Favorite Beers</span> </h3>
+
+  <div class="row">
+    <div class="col-md-12 well">
+      <table class="table table-hover">
+
+        <thead>
+          <tr>
+            <th>Date Logged</th>
+            <th>Beer Type</th>
+            <th>Beer Name</th>
+            <th># Consumed</th>
+            <th>Star Rating</th>
+            <th>Notes</th>
+            <th>Saved as Favorite?</th>
+            <th>User Name</th>
+            <th>Calories</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @beers.each do |beer| %>
+            <% if beer.user.username == current_user.username %>
+              <% if beer.fav_save == "Yes" %>
+                <tr>
+                  <td><%= beer.created_at.strftime("%b %e, %Y") %></td>
+                  <td><%= beer.staticbeer.beer_cat_name %></td>
+                  <td><%= beer.beer_name %></td>
+                  <td><%= beer.num_consumed %></td>
+                  <td><%= beer.star_rating %></td>
+                  <td><%= beer.notes %></td>
+                  <td><%= beer.fav_save %></td>
+                  <td><%= beer.user.username %></td>
+                  <td><%= beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
