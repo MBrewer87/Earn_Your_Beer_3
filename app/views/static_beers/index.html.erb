@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
     Static Beer List - Maintained by Moderator
-    <a href="/static_beers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+      <% if current_user.username == "MBrewer87" %>
+        <a href="/static_beers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+      <% end %>
   </h1>
 </div>
 
@@ -25,21 +27,23 @@
           <tr>
             <td><%= static_beer.beer_cat_name %></td>
             <td><%= static_beer.calpertype %></td>
-            <td>
-              <a href="/static_beers/<%= static_beer.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/static_beers/<%= static_beer.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_static_beer/<%= static_beer.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
+            <% if current_user.username == "MBrewer87" %>
+              <td>
+                <a href="/static_beers/<%= static_beer.id %>" class="btn btn-primary">
+                  <i class="fa fa-search-plus"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/static_beers/<%= static_beer.id %>/edit" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/delete_static_beer/<%= static_beer.id %>" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

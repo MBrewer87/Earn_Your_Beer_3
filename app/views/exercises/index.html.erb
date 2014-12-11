@@ -34,18 +34,8 @@
               <td><%= exercise.duration %></td>
               <td><%= exercise.intensity %></td>
               <td><%= exercise.favsave %></td>
-              <td> <%= exercise.user.username %> </td>
-              <td>
-                <% if exercise.intensity == "Low" %>
-                  <%= (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
-                <% elsif exercise.intensity == "Medium" %>
-                  <%= (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
-                <% elsif exercise.intensity == "High" %>
-                  <%= (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2) %>
-                <% else %>
-                  N/A
-                <% end %>
-              </td>
+              <td> <%= exercise.user.username %></td>
+              <td> <%= exercise.calorie %></td>
               <td>
                 <a href="/exercises/<%= exercise.id %>" class="btn btn-primary">
                   <i class="fa fa-search-plus"></i>
@@ -77,14 +67,7 @@
           <% running_total = 0 %>
           <% @exercises.each do |exercise| %>
             <% if exercise.user.username == current_user.username %>
-              <% running_total = running_total +
-                if exercise.intensity == "Low"
-                 (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                elsif exercise.intensity =="Medium"
-                  (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                elsif exercise.intensity == "High"
-                  (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                end %>
+              <% running_total = running_total + exercise.calorie %>
             <% end %>
           <% end %>
           <%= running_total.round(2) %>

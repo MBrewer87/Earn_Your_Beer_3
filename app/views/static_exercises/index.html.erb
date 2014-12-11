@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
     Static Exercises - Maintained by Moderator
-    <a href="/static_exercises/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+      <% if current_user.username == "MBrewer87" %>
+        <a href="/static_exercises/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+      <% end %>
   </h1>
 </div>
 
@@ -38,17 +40,19 @@
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <a href="/static_exercises/<%= static_exercise.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
+          <% if current_user.username == "MBrewer87" %>
+            <a href="/static_exercises/<%= static_exercise.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
 
-          <a href="/static_exercises/<%= static_exercise.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
+            <a href="/static_exercises/<%= static_exercise.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
 
-          <a href="/delete_static_exercise/<%= static_exercise.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
+            <a href="/delete_static_exercise/<%= static_exercise.id %>" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          <% end %>
         </div>
       </div>
     </div>

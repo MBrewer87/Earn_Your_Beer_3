@@ -4,7 +4,7 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Exercise #<%= @exercise.id %></h3>
+        <h3 class="panel-title">Exercise On <%= @exercise.created_at.strftime("%b %e, %Y") %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -31,6 +31,9 @@
 
               <dt>User</dt>
               <dd><%= @exercise.user.username %></dd>
+
+              <dt>Calories Burned</dt>
+              <dd><%= @exercise.calorie %> </dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

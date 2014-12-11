@@ -46,24 +46,16 @@
     <div class="panel-body">
   <!-- Since I have calories calculated by the site vs. stored in a table, we will re-calculate the running total for both exercise and beer for that user here and then subtract them. I acknowledge this isn't perfectly DRY, but it works for this purpose. To simplify the app in the future, we could have a hidden form box in the "new" forms for Exercise and Beer that auto-calculates and stores calorie values in a "calorie" column (I just had other more critical project things to focus on). -->
           <% runningtotal1 = 0 %>
-          <% runningtotal2 = 0 %>
           <% @exercises.each do |exercise| %>
             <% if exercise.user.username == current_user.username %>
-              <% runningtotal1 = runningtotal1 +
-                if exercise.intensity == "Low"
-                 (exercise.staticexercise.calpermin_low * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                elsif exercise.intensity =="Medium"
-                  (exercise.staticexercise.calpermin_med * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                elsif exercise.intensity == "High"
-                  (exercise.staticexercise.calpermin_high * exercise.duration * ((exercise.user.weight - 170)/170+1)).to_f.round(2)
-                end %>
+              <% runningtotal1 = runningtotal1 + exercise.calorie %>
             <% end %>
           <% end %>
 
           <% runningtotal2 = 0 %>
           <% @beers.each do |beer| %>
             <% if beer.user.username == current_user.username %>
-              <% runningtotal2 = runningtotal2 + beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %>
+              <% runningtotal2 = runningtotal2 + beer.calorie %>
             <% end %>
           <% end %>
 

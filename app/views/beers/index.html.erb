@@ -43,7 +43,7 @@
               <td><%= beer.notes %></td>
               <td><%= beer.fav_save %></td>
               <td><%= beer.user.username %></td>
-              <td><%= beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %></td>
+              <td><%= beer.calorie %></td>
               <td>
                 <a href="/beers/<%= beer.id %>" class="btn btn-primary">
                   <i class="fa fa-search-plus"></i>
@@ -75,7 +75,7 @@
           <% running_total = 0 %>
           <% @beers.each do |beer| %>
             <% if beer.user.username == current_user.username %>
-              <% running_total = running_total + beer.staticbeer.calpertype.to_i * beer.num_consumed.to_i %>
+              <% running_total = running_total + beer.calorie %>
             <% end %>
           <% end %>
           <%= running_total %>
