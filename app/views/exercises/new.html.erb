@@ -25,7 +25,7 @@
               Exercise Category
             </label>
             <div class="col-sm-10">
-             <%= select_tag(:exercise_category, options_from_collection_for_select(StaticExercise.all, :id, :exercise_cat_name, @exercise.exercise_category), :class => "form-control") %>
+             <%= select_tag(:exercise_category, options_from_collection_for_select(StaticExercise.order("exercise_cat_name ASC"), :id, :exercise_cat_name, @exercise.exercise_category), :class => "form-control") %>
             </div>
           </div>
 

@@ -21,6 +21,16 @@ class ExercisesController < ApplicationController
     @exercise.intensity = params[:intensity]
     @exercise.favsave = params[:favsave]
     @exercise.user_id = params[:user_id]
+# This calculates in the controller since it depends on the form parameters, but I want it saved in the model. The last term is a weight scaling function.
+    @exercise.calorie = if params[:intensity] == "Low"
+                          (@exercise.staticexercise.calpermin_low * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        elsif params[:intensity] == "Medium"
+                          (@exercise.staticexercise.calpermin_med * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        elsif params[:intensity] == "High"
+                          (@exercise.staticexercise.calpermin_high * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        else
+                          N/A
+                        end
 
     if @exercise.save
       redirect_to "/exercises", :notice => "Exercise created successfully."
@@ -41,6 +51,16 @@ class ExercisesController < ApplicationController
     @exercise.intensity = params[:intensity]
     @exercise.favsave = params[:favsave]
     @exercise.user_id = params[:user_id]
+# This calculates in the controller since it depends on the form parameters, but I want it saved in the model. The last term is a weight scaling function.
+    @exercise.calorie = if params[:intensity] == "Low"
+                          (@exercise.staticexercise.calpermin_low * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        elsif params[:intensity] == "Medium"
+                          (@exercise.staticexercise.calpermin_med * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        elsif params[:intensity] == "High"
+                          (@exercise.staticexercise.calpermin_high * params[:duration].to_f * ((@exercise.user.weight - 170)/170+1)).to_f.round(2)
+                        else
+                          N/A
+                        end
 
     if @exercise.save
       redirect_to "/exercises", :notice => "Exercise updated successfully."

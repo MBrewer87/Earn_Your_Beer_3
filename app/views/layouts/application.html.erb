@@ -28,7 +28,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">Toggle Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -43,7 +43,7 @@
         <li><a href="/exercises">Exercise Tracking</a></li>
       <% if current_user.present? %>
         <li><a href="/favorites">My Favorites</a></li>
-        <li><a href="/users/<%= current_user.id %>/weightedit">Update Weight</a></li>
+        <li><a href="/users/<%= current_user.id %>/weightedit">Update Weight + My Progress</a></li>
       <% end %>
         <li><a href="/about">About</a></li>
       </ul>

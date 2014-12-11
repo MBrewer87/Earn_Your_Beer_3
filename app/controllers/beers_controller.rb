@@ -22,6 +22,8 @@ class BeersController < ApplicationController
     @beer.notes = params[:notes]
     @beer.fav_save = params[:fav_save]
     @beer.user_id = params[:user_id]
+# This calculates in the controller since it depends on the form parameters, but I want it saved in the model.
+    @beer.calorie = (@beer.staticbeer.calpertype.to_f * params[:num_consumed].to_f).round(2)
 
     if @beer.save
       redirect_to "/beers", :notice => "Beer created successfully."
@@ -44,6 +46,8 @@ class BeersController < ApplicationController
     @beer.notes = params[:notes]
     @beer.fav_save = params[:fav_save]
     @beer.user_id = params[:user_id]
+# This calculates in the controller since it depends on the form parameters, but I want it saved in the model.
+    @beer.calorie = (@beer.staticbeer.calpertype.to_f * params[:num_consumed].to_f).round(2)
 
     if @beer.save
       redirect_to "/beers", :notice => "Beer updated successfully."

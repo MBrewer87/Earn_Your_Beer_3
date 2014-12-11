@@ -15,7 +15,7 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Edit Exercise #<%= @exercise.id %></h3>
+        <h3 class="panel-title">Edit Exercise On <%= @exercise.created_at.strftime("%b %e, %Y") %></h3>
       </div>
       <div class="panel-body">
         <form action="/update_exercise/<%= @exercise.id %>" class="form-horizontal">
@@ -45,9 +45,15 @@
               Intensity
             </label>
             <div class="col-sm-10">
-              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity1" value="Low">Low</label>
-              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity2" value="Medium">Medium</label>
-              <label class="checkbox-inline"> <input type="radio" name="intensity" id="intensity3" value="High">High</label>
+              <%= radio_button_tag :intensity, "Low", (true if @exercise.intensity == "Low") %>
+              <%= label_tag :intensity1, "Low" %>
+
+              <%= radio_button_tag :intensity, "Medium", (true if @exercise.intensity == "Medium") %>
+              <%= label_tag :intensity2, "Medium" %>
+
+              <%= radio_button_tag :intensity, "High", (true if @exercise.intensity == "High") %>
+              <%= label_tag :intensity3, "High" %>
+
             </div>
           </div>
 
@@ -57,8 +63,17 @@
               Save as Favorite?
             </label>
             <div class="col-sm-10">
-                <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave1" value="Yes">Yes</label>
-                <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave2" value="No">No</label>
+            <!-- Doing it this way because the radio helper method has trouble when used multiple times for different columns -->
+               <% if @exercise.favsave == "Yes" %>
+                  <label class="checkbox-inline"> <input checked="checked" type="radio" name="favsave" id="favsave1" value="Yes">Yes</label>
+                  <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave2" value="No">No</label>
+              <% elsif @exercise.favsave == "No" %>
+                  <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave1" value="Yes">Yes</label>
+                  <label class="checkbox-inline"> <input checked="checked" type="radio" name="favsave" id="favsave2" value="No">No</label>
+              <% else %>
+                  <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave1" value="Yes">Yes</label>
+                  <label class="checkbox-inline"> <input type="radio" name="favsave" id="favsave2" value="No">No</label>
+              <% end %>
             </div>
           </div>
 

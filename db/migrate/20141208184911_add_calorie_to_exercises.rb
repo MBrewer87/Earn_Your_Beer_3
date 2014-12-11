@@ -1,5 +1,5 @@
 class AddCalorieToExercises < ActiveRecord::Migration
   def change
-    add_column :exercises, :calorie, :integer
+    add_column :exercises, :calorie, :float
   end
 end

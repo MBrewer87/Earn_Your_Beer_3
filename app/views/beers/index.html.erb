@@ -22,8 +22,6 @@
           <th># Consumed</th>
           <th>Star Rating</th>
           <th>Notes</th>
-          <th>Saved as Favorite?</th>
-          <th>User Name</th>
           <th>Calories</th>
           <th></th>
           <th></th>
@@ -41,8 +39,6 @@
               <td><%= beer.num_consumed %></td>
               <td><%= beer.star_rating %></td>
               <td><%= beer.notes %></td>
-              <td><%= beer.fav_save %></td>
-              <td><%= beer.user.username %></td>
               <td><%= beer.calorie %></td>
               <td>
                 <a href="/beers/<%= beer.id %>" class="btn btn-primary">

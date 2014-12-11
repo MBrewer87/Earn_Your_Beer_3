@@ -6,7 +6,7 @@ class Beer < ActiveRecord::Base
   validates( :beer_name, :presence => true)
   validates( :star_rating, :presence => true)
   validates( :fav_save, :presence => true)
-  validates( :num_consumed, :presence => true, numericality: { only_integer: true })
+  validates( :num_consumed, :presence => true, numericality: true)
   validates( :user_id, :presence => true)
   validates( :user, :presence => true)
 end

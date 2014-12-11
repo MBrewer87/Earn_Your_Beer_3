@@ -15,8 +15,7 @@
       <thead>
         <tr>
           <th>Beer Category</th>
-          <th>Calories Per Serving</th>
-          <th></th>
+          <th>Calories Per Serving (12 oz.)</th>
           <th></th>
           <th></th>
         </tr>
@@ -28,11 +27,6 @@
             <td><%= static_beer.beer_cat_name %></td>
             <td><%= static_beer.calpertype %></td>
             <% if current_user.username == "MBrewer87" %>
-              <td>
-                <a href="/static_beers/<%= static_beer.id %>" class="btn btn-primary">
-                  <i class="fa fa-search-plus"></i>
-                </a>
-              </td>
               <td>
                 <a href="/static_beers/<%= static_beer.id %>/edit" class="btn btn-warning">
                   <i class="fa fa-edit"></i>

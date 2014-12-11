@@ -3,7 +3,7 @@ class CreateBeers < ActiveRecord::Migration
     create_table :beers do |t|
       t.integer :beer_type
       t.string :beer_name
-      t.integer :num_consumed
+      t.float :num_consumed
       t.integer :star_rating
       t.string :notes
       t.string :fav_save

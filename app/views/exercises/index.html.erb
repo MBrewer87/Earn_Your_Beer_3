@@ -16,8 +16,6 @@
           <th>Exercise Category</th>
           <th>Duration</th>
           <th>Intensity</th>
-          <th>Favorite?</th>
-          <th>User Name</th>
           <th>Calories Burned</th>
           <th></th>
           <th></th>
@@ -33,8 +31,6 @@
               <td><%= exercise.staticexercise.exercise_cat_name %></td>
               <td><%= exercise.duration %></td>
               <td><%= exercise.intensity %></td>
-              <td><%= exercise.favsave %></td>
-              <td> <%= exercise.user.username %></td>
               <td> <%= exercise.calorie %></td>
               <td>
                 <a href="/exercises/<%= exercise.id %>" class="btn btn-primary">
