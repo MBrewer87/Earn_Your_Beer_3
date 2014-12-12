@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @exercises = Exercise.order("created_at DESC")
+    @exercises = current_user.exercises.order("created_at DESC")
   end
 
   def show

@@ -47,16 +47,12 @@
   <!-- Since I have calories calculated by the site vs. stored in a table, we will re-calculate the running total for both exercise and beer for that user here and then subtract them. I acknowledge this isn't perfectly DRY, but it works for this purpose. To simplify the app in the future, we could have a hidden form box in the "new" forms for Exercise and Beer that auto-calculates and stores calorie values in a "calorie" column (I just had other more critical project things to focus on). -->
           <% runningtotal1 = 0 %>
           <% @exercises.each do |exercise| %>
-            <% if exercise.user.username == current_user.username %>
-              <% runningtotal1 = runningtotal1 + exercise.calorie %>
-            <% end %>
+            <% runningtotal1 = runningtotal1 + exercise.calorie %>
           <% end %>
 
           <% runningtotal2 = 0 %>
           <% @beers.each do |beer| %>
-            <% if beer.user.username == current_user.username %>
-              <% runningtotal2 = runningtotal2 + beer.calorie %>
-            <% end %>
+            <% runningtotal2 = runningtotal2 + beer.calorie %>
           <% end %>
 
     <h4> To date, your net calories is <strong> <%= (runningtotal2 - runningtotal1).round(2) %> </strong>. Positive numbers mean more calories gained than burned, negative numbers mean more calories burned than gained (aka, you've earned your beer!). </h4>

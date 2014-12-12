@@ -22,7 +22,6 @@
         </thead>
         <tbody>
           <% @exercises.each do |exercise| %>
-            <% if exercise.user.username == current_user.username %>
               <% if exercise.favsave == "Yes" %>
                 <tr>
                   <td><%= exercise.created_at.strftime("%b %e, %Y") %> </td>
@@ -33,7 +32,6 @@
                   <td> <%= exercise.user.username %> </td>
                   <td> <%= exercise.calorie %></td>
                 </tr>
-              <% end %>
             <% end %>
           <% end %>
         </tbody>
@@ -63,20 +61,18 @@
 
         <tbody>
           <% @beers.each do |beer| %>
-            <% if beer.user.username == current_user.username %>
-              <% if beer.fav_save == "Yes" %>
-                <tr>
-                  <td><%= beer.created_at.strftime("%b %e, %Y") %></td>
-                  <td><%= beer.staticbeer.beer_cat_name %></td>
-                  <td><%= beer.beer_name %></td>
-                  <td><%= beer.num_consumed %></td>
-                  <td><%= beer.star_rating %></td>
-                  <td><%= beer.notes %></td>
-                  <td><%= beer.fav_save %></td>
-                  <td><%= beer.user.username %></td>
-                  <td><%= beer.calorie %></td>
-                </tr>
-              <% end %>
+            <% if beer.fav_save == "Yes" %>
+              <tr>
+                <td><%= beer.created_at.strftime("%b %e, %Y") %></td>
+                <td><%= beer.staticbeer.beer_cat_name %></td>
+                <td><%= beer.beer_name %></td>
+                <td><%= beer.num_consumed %></td>
+                <td><%= beer.star_rating %></td>
+                <td><%= beer.notes %></td>
+                <td><%= beer.fav_save %></td>
+                <td><%= beer.user.username %></td>
+                <td><%= beer.calorie %></td>
+              </tr>
             <% end %>
           <% end %>
         </tbody>

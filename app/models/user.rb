@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   validates( :username, :presence => true, :uniqueness => true)
   validates( :email, :presence => true, :uniqueness => true)
   validates( :encrypted_password, :presence => true)
+  validates( :weight, :presence => true, :numericality => true)
 end

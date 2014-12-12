@@ -56,8 +56,8 @@ class UsersController < ApplicationController
 
   def weightedit
     @user = User.find(params[:id])
-    @exercises = Exercise.all
-    @beers = Beer.all
+    @exercises = current_user.exercises
+    @beers = current_user.beers
   end
 
   def weightupdate
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to "/", :notice => "Weight updated successfully! Earn that beer."
     else
-      render 'weight_edit'
+      redirect_to "/", :notice => "Need to enter number values for weight."
     end
   end
 

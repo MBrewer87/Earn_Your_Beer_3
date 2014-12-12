@@ -2,7 +2,7 @@ class BeersController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @beers = Beer.order("created_at DESC")
+    @beers = current_user.beers.order("created_at DESC")
   end
 
   def show
